@@ -1,9 +1,14 @@
-package org.comshalom.evangeliza.backend.model;
+package org.comshalom.evangelizar.backend.model;
+
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
 /**
- * Created by BN on 8/3/15.
+ * Cadastro entity.
  */
+@Entity
 public class Cadastro {
+
     // Labels table name
     public static final String TABLE = "Cadastro";
 
@@ -17,17 +22,21 @@ public class Cadastro {
     public static final String KEY_email = "email";
     public static final String KEY_tel = "tel";
     public static final String KEY_local = "local";
+    public static final String KEY_sync = "sync";
 
     // property help us to keep data
-    public int cadastro_ID;
-    public String nome;
-    public String endereco;
-    public String bairro;
-    public String facebook;
-    public int idade;
-    public String email;
-    public int tel;
-    public String local;
+    @Id
+    private String idGoogle;
+    private int cadastro_ID;
+    private String nome;
+    private String endereco;
+    private String bairro;
+    private String facebook;
+    private int idade;
+    private String email;
+    private int tel;
+    private String local;
+    private boolean sync;
 
     public int getCadastro_ID() {
         return cadastro_ID;
@@ -99,5 +108,21 @@ public class Cadastro {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public boolean isSync() {
+        return sync;
+    }
+
+    public void setSync(boolean sync) {
+        this.sync = sync;
+    }
+
+    public String getIdGoogle() {
+        return idGoogle;
+    }
+
+    public void setIdGoogle(String idGoogle) {
+        this.idGoogle = idGoogle;
     }
 }
