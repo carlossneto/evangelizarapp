@@ -1,9 +1,11 @@
-package comshalom.org.evangelizar;
+package org.comshalom.evangelizar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import comshalom.org.evangelizar.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -10,6 +10,8 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
+import org.comshalom.evangeliza.backend.model.Cadastro;
+
 import javax.inject.Named;
 
 /**
@@ -32,6 +34,7 @@ public class MyEndpoint {
     @ApiMethod(name = "sayHi")
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
+        Cadastro cadastro = new Cadastro();
         response.setData("Hi, " + name);
 
         return response;
