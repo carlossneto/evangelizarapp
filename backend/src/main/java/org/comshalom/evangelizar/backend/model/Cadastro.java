@@ -3,26 +3,13 @@ package org.comshalom.evangelizar.backend.model;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
+import java.util.UUID;
+
 /**
  * Cadastro entity.
  */
 @Entity
 public class Cadastro {
-
-    // Labels table name
-    public static final String TABLE = "Cadastro";
-
-    // Labels Table Columns names
-    public static final String KEY_ID = "id";
-    public static final String KEY_nome = "nome";
-    public static final String KEY_endereco = "endereco";
-    public static final String KEY_bairro = "bairro";
-    public static final String KEY_facebook = "facebook";
-    public static final String KEY_idade = "idade";
-    public static final String KEY_email = "email";
-    public static final String KEY_tel = "tel";
-    public static final String KEY_local = "local";
-    public static final String KEY_sync = "sync";
 
     // property help us to keep data
     @Id
@@ -34,9 +21,16 @@ public class Cadastro {
     private String facebook;
     private int idade;
     private String email;
-    private int tel;
+    private String tel;
     private String local;
-    private boolean sync;
+
+    public String getIdGoogle() {
+        return idGoogle;
+    }
+
+    public void setIdGoogle(String idGoogle) {
+        this.idGoogle = idGoogle;
+    }
 
     public int getCadastro_ID() {
         return cadastro_ID;
@@ -94,11 +88,11 @@ public class Cadastro {
         this.email = email;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
@@ -108,21 +102,5 @@ public class Cadastro {
 
     public void setLocal(String local) {
         this.local = local;
-    }
-
-    public boolean isSync() {
-        return sync;
-    }
-
-    public void setSync(boolean sync) {
-        this.sync = sync;
-    }
-
-    public String getIdGoogle() {
-        return idGoogle;
-    }
-
-    public void setIdGoogle(String idGoogle) {
-        this.idGoogle = idGoogle;
     }
 }
