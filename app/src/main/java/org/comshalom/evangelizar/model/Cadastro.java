@@ -1,4 +1,4 @@
-package org.comshalom.evangelizar.dao;
+package org.comshalom.evangelizar.model;
 
 /**
  * Created by BN on 8/3/15.

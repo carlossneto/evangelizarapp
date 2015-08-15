@@ -3,4 +3,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_cadastro">CadastroActivity</string>
+
+    <string name="cad_end">Endereço</string>
+    <string name="cad_bairro">Bairro</string>
+    <string name="cad_edit_nome">Nome</string>
+    <string name="cad_edit_tel">Tel</string>
+    <string name="cad_edit_nascimento">Data de Nascimento</string>
+    <string name="cad_edit_local">Local</string>
+    <string name="cad_edit_email">Email</string>
+    <string name="cad_edit_idade">Idade</string>
+
 </resources>

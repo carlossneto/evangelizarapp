@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import org.comshalom.evangelizar.model.Cadastro;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
