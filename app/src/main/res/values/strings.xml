@@ -14,4 +14,32 @@
     <string name="cad_edit_email">Email</string>
     <string name="cad_edit_idade">Idade</string>
 
+    <string name="title_activity_evangelizador">Evangelizador</string>
+    <string name="label_nome">Nome:</string>
+    <string name="label_tipo">Tipo:</string>
+    <string name="label_telefone">Telefone:</string>
+    <string name="label_email">E-mail:</string>
+    <string name="label_evento">Evento:</string>
+    <string name="button_salvar">Salvar</string>
+
+    <string-array name="tipo">
+        <item></item>
+        <item>Obra</item>
+        <item>Vocacionado(a)</item>
+        <item>P1</item>
+        <item>P2</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>Consagrado(a)</item>
+    </string-array>
+
+    <string-array name="evento">
+        <item></item>
+        <item>Halleluya</item>
+        <item>Lanchonete</item>
+        <item>Noite de louvor</item>
+        <item>Reviver</item>
+        <item>Outro</item>
+    </string-array>
+
 </resources>
