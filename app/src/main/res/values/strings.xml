@@ -9,7 +9,7 @@
     <string name="cad_bairro">Bairro</string>
     <string name="cad_edit_nome">Nome</string>
     <string name="cad_edit_tel">Tel</string>
-    <string name="cad_edit_nascimento">Data de Nascimento</string>
+    <string name="cad_edit_facebook">Facebook</string>
     <string name="cad_edit_local">Local</string>
     <string name="cad_edit_email">Email</string>
     <string name="cad_edit_idade">Idade</string>

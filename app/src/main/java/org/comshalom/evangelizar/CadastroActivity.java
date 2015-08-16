@@ -24,7 +24,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
     EditText editTextEnd;
     EditText editTextTel;
     EditText editTextBairro;
-    EditText editTextNasc;
+    EditText editTextFacebook;
     EditText editTextIdade;
     EditText editTextLocal;
 
@@ -45,7 +45,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         editTextEnd = (EditText) findViewById(R.id.editTextEnd);
         editTextTel = (EditText) findViewById(R.id.editTextTel);
         editTextBairro = (EditText) findViewById(R.id.editTextBairro);
-        editTextNasc = (EditText) findViewById(R.id.editTextNasc);
+        editTextFacebook = (EditText) findViewById(R.id.editTextFacebook);
         editTextIdade = (EditText) findViewById(R.id.editTextIdade);
         editTextLocal = (EditText) findViewById(R.id.editTextLocal);
 
@@ -70,7 +70,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         editTextEnd.setText( cadastro.getEndereco() );
         editTextTel.setText( String.valueOf(cadastro.getTel() ));
         editTextBairro.setText( cadastro.getBairro() );
-        editTextNasc.setText( cadastro.getFacebook() );
+        editTextFacebook.setText( cadastro.getFacebook() );
         editTextIdade.setText( String.valueOf(cadastro.getIdade()) );
         editTextLocal.setText( cadastro.getLocal() );
 
@@ -105,7 +105,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
             cadastro.setNome(editTextNome.getText().toString());
             cadastro.setEndereco(editTextEnd.getText().toString());
             cadastro.setBairro(editTextBairro.getText().toString());
-            cadastro.setFacebook(editTextNasc.getText().toString());
+            cadastro.setFacebook(editTextFacebook.getText().toString());
             cadastro.setIdade(Integer.parseInt(editTextIdade.getText().toString()));
             cadastro.setEmail(editTextEmail.getText().toString());
             cadastro.setTel(Integer.parseInt(editTextTel.getText().toString()));
@@ -134,24 +134,5 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         }
 
     }
-    /*
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_sexo_m:
-                if (checked)
-                    // Pirates are the best
-                    break;
-            case R.id.radio_sexo_f:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
-    }
-    */
-
 
 }

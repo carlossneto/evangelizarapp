@@ -42,8 +42,6 @@ public class MainActivity extends ListActivity  implements android.view.View.OnC
     public void onClick(View view) {
         if (view== findViewById(R.id.btnAdd)){
 
-            System.out.println("MainActivity");
-
             Intent intent = new Intent(this, CadastroActivity.class);
             intent.putExtra("cadastro_ID",0);
             startActivity(intent);
