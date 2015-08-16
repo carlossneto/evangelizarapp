@@ -42,7 +42,9 @@ public class MainActivity extends ListActivity  implements android.view.View.OnC
     public void onClick(View view) {
         if (view== findViewById(R.id.btnAdd)){
 
-            Intent intent = new Intent(this, CadastroDetail.class);
+            System.out.println("MainActivity");
+
+            Intent intent = new Intent(this, CadastroActivity.class);
             intent.putExtra("cadastro_ID",0);
             startActivity(intent);
 
@@ -61,7 +63,7 @@ public class MainActivity extends ListActivity  implements android.view.View.OnC
 
                         System.out.println("Id parametro:"+ cadastroId);
 
-                        Intent objIndent = new Intent(getApplicationContext(),CadastroDetail.class);
+                        Intent objIndent = new Intent(getApplicationContext(),CadastroActivity.class);
                         objIndent.putExtra("cadastro_Id", Integer.parseInt( cadastroId));
                         startActivity(objIndent);
                     }

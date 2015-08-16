@@ -141,12 +141,11 @@ public class CadastroDAO {
     public Cadastro getCadastroById(int Id){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        System.out.println("passou pelo getCadastroById");
         //System.out.println("Id parametro:"+ Id);
         //db.execSQL("drop table if exists Cadastro");
         //original db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, nascimento TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT)");
-
         //db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, nascimento TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT)");
-
         //db.execSQL("delete from Cadastro");
 
         String selectQuery =  "SELECT  " +
