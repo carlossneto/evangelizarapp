@@ -34,24 +34,22 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         setContentView(R.layout.activity_cadastro);
 
         btnSave = (Button) findViewById(R.id.btnSave);
-        btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnClose = (Button) findViewById(R.id.btnClose);
+        //TODO APAGAR DEPOIS btnDelete = (Button) findViewById(R.id.btnDelete);
+        //TODO APAGAR DEPOIS btnClose = (Button) findViewById(R.id.btnClose);
 
 
         editTextNome = (EditText) findViewById(R.id.editTextNome);
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextEnd = (EditText) findViewById(R.id.editTextEnd);
         editTextTel = (EditText) findViewById(R.id.editTextTel);
         editTextBairro = (EditText) findViewById(R.id.editTextBairro);
         editTextFacebook = (EditText) findViewById(R.id.editTextFacebook);
         editTextIdade = (EditText) findViewById(R.id.editTextIdade);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextLocal = (EditText) findViewById(R.id.editTextLocal);
-
-
+        editTextEnd = (EditText) findViewById(R.id.editTextEnd);
 
         btnSave.setOnClickListener(this);
-        btnDelete.setOnClickListener(this);
-        btnClose.setOnClickListener(this);
+        //TODO APAGAR DEPOIS btnDelete.setOnClickListener(this);
+        //TODO APAGAR DEPOIS btnClose.setOnClickListener(this);
 
 
         _Cadastro_Id =0;
@@ -122,7 +120,9 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
                 repo.update(cadastro);
                 Toast.makeText(this,"Cadastro Record updated",Toast.LENGTH_SHORT).show();
             }
-        }else if (view== findViewById(R.id.btnDelete)){
+        }
+        /*TODO APAGAR DEPOIS
+        else if (view== findViewById(R.id.btnDelete)){
             CadastroDAO repo = new CadastroDAO(this);
             repo.delete(_Cadastro_Id);
             Toast.makeText(this, "Cadastro Record Deleted", Toast.LENGTH_SHORT);
@@ -130,6 +130,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         }else if (view== findViewById(R.id.btnClose)){
             finish();
         }
+        */
 
     }
 
