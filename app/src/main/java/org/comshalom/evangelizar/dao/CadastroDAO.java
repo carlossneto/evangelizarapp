@@ -16,6 +16,10 @@ public class CadastroDAO {
     public CadastroDAO(Context context) {
 
         dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //db.execSQL("drop table if exists Cadastro");
+        //db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, facebook TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT, sync INTEGER)");
+        db.close();
     }
 
     public int insert(Cadastro cadastro) {
@@ -32,6 +36,7 @@ public class CadastroDAO {
         values.put(Cadastro.KEY_email, cadastro.getEmail() );
         values.put(Cadastro.KEY_tel, cadastro.getTel() );
         values.put(Cadastro.KEY_local, cadastro.getLocal() );
+        values.put(Cadastro.KEY_sync, 0 );
 
         System.out.println("valores :" + values);
 
@@ -50,11 +55,6 @@ public class CadastroDAO {
         */
                 // Inserting Row
                 long cadastro_Id = db.insert(Cadastro.TABLE, null, values);
-
-                //System.out.println("cadastro_Id: " + cadastro_Id); //apagar
-                //System.out.println("nome_cadastro: " + cadastro.nome); //apagar
-                //System.out.println(values);
-
 
                 db.close(); // Closing database connection
         return (int) cadastro_Id;
@@ -85,11 +85,18 @@ public class CadastroDAO {
         System.out.println(values.toString()); //teste
 
         // It's a good practice to use parameter ?, instead of concatenate string
-        db.update(Cadastro.TABLE, values, Cadastro.KEY_ID + "= ?", new String[] { String.valueOf(cadastro.getCadastro_ID()) });
+        db.update(Cadastro.TABLE, values, Cadastro.KEY_ID + "= ?", new String[]{String.valueOf(cadastro.getCadastro_ID())});
         db.close(); // Closing database connection
     }
 
-    public ArrayList<HashMap<String, String>>  getCadastroList() {
+    public void updateSync() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String updateQuery = "update cadastro set sync = 1";
+        db.execSQL( updateQuery );
+        db.close();
+    }
+
+    public ArrayList<HashMap<String, String>>  getCadastroList(int sync) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -102,19 +109,14 @@ public class CadastroDAO {
         Cadastro.KEY_email + "," +
         Cadastro.KEY_local + "," +
         Cadastro.KEY_tel +
-        " FROM " + Cadastro.TABLE;
-
-        //selectQuery="SELECT NOME from cadastro";
+        " FROM " + Cadastro.TABLE +
+        " WHERE sync = "+ sync ;
 
         System.out.println(selectQuery);
 
-
         //Cadastro cadastro = new Cadastro();
         ArrayList<HashMap<String, String>> cadastroList = new ArrayList<HashMap<String, String>>();
-
         Cursor cursor = db.rawQuery(selectQuery, null);
-
-
         if (cursor.moveToFirst()) {
             do {
                 System.out.print((cursor.getColumnIndex(Cadastro.KEY_ID)));
@@ -123,11 +125,6 @@ public class CadastroDAO {
                 cadastro.put("id", cursor.getString(cursor.getColumnIndex(Cadastro.KEY_ID)));
                 cadastro.put("nome", cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
                 cadastroList.add(cadastro);
-
-                //System.out.println("listagem nome : " + cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
-                //System.out.println("listagem id :" + cursor.getString(cursor.getColumnIndex(Cadastro.KEY_ID)));
-                //System.out.println("listagem endereco :" + cursor.getString(cursor.getColumnIndex(Cadastro.KEY_endereco)));
-                //System.out.println("listagem email : " + cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email)));
 
             } while (cursor.moveToNext());
         }
@@ -141,12 +138,7 @@ public class CadastroDAO {
     public Cadastro getCadastroById(int Id){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        System.out.println("passou pelo getCadastroById");
         //System.out.println("Id parametro:"+ Id);
-        //db.execSQL("drop table if exists Cadastro");
-        //original db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, nascimento TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT)");
-        //db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, nascimento TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT)");
-        //db.execSQL("delete from Cadastro");
 
         String selectQuery =  "SELECT  " +
                 Cadastro.KEY_ID + "," +

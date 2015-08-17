@@ -17,6 +17,9 @@ public class Cadastro {
     public static final String KEY_email = "email";
     public static final String KEY_tel = "tel";
     public static final String KEY_local = "local";
+    public static final String KEY_sync = "sync";
+
+
 
     // property help us to keep data
     private int cadastro_ID;
@@ -28,6 +31,15 @@ public class Cadastro {
     private String email;
     private int tel;
     private String local;
+    private int sync;
+
+    public int getSync() {
+        return sync;
+    }
+
+    public void setSync(int sync) {
+        this.sync = sync;
+    }
 
     public int getCadastro_ID() {
         return cadastro_ID;

@@ -49,7 +49,7 @@ public class MainActivity extends ListActivity  implements android.view.View.OnC
         }else {
             CadastroDAO repo = new CadastroDAO(this);
 
-            ArrayList<HashMap<String, String>> cadastroList =  repo.getCadastroList();
+            ArrayList<HashMap<String, String>> cadastroList =  repo.getCadastroList(0);
             if(cadastroList.size()!=0) {
                 ListView lv = getListView();
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

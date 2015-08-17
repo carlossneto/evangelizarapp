@@ -14,8 +14,6 @@ import android.widget.Toast;
 import org.comshalom.evangelizar.dao.CadastroDAO  ;
 import org.comshalom.evangelizar.model.Cadastro;
 
-
-
 public class CadastroActivity extends ActionBarActivity implements View.OnClickListener{
 
     Button btnSave ,  btnDelete, btnClose;

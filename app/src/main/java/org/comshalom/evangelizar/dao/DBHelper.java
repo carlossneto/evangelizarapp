@@ -32,7 +32,8 @@ public class DBHelper  extends SQLiteOpenHelper {
                 + Cadastro.KEY_idade + " INTEGER, "
                 + Cadastro.KEY_email + " TEXT, "
                 + Cadastro.KEY_local + " TEXT, "
-                + Cadastro.KEY_tel + " INTEGER )";
+                + Cadastro.KEY_tel + " INTEGER "
+                + Cadastro.KEY_sync +" INTEGER )";
 
         String CREATE_TABLE_EVANGELIZADOR = "CREATE TABLE IF NOT EXISTS  " + Evangelizador.TABLE  + "("
                 + Evangelizador.KEY_ID + " INTEGER PRIMARY KEY,"
