@@ -162,9 +162,9 @@ public class CadastroDAO {
                 cadastro.setNome(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
                 cadastro.setBairro  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
                 cadastro.setFacebook  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_facebook)) );
-                cadastro.setIdade  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_idade)) );
+                cadastro.setIdade  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_idade)) );
                 cadastro.setEmail  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email)) );
-                cadastro.setTel  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_tel)) );
+                cadastro.setTel  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_tel)) );
                 cadastro.setLocal  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_local)) );
 
             } while (cursor.moveToNext());

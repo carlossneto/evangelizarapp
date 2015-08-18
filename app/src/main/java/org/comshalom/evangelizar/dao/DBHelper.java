@@ -28,7 +28,7 @@ public class DBHelper  extends SQLiteOpenHelper {
                 + Cadastro.KEY_nome + " TEXT, "
                 + Cadastro.KEY_bairro + " TEXT, "
                 + Cadastro.KEY_facebook + " TEXT, "
-                + Cadastro.KEY_idade + " INTEGER, "
+                + Cadastro.KEY_idade + " TEXT, "
                 + Cadastro.KEY_email + " TEXT, "
                 + Cadastro.KEY_local + " TEXT, "
                 + Cadastro.KEY_tel + " INTEGER, "

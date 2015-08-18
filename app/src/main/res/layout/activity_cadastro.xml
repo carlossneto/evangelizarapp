@@ -46,10 +46,6 @@
         </TableRow>
 
         <TableRow>
-
-        </TableRow>
-
-        <TableRow>
             <TextView
                 android:id="@+id/textCadastroBairro"
                 android:layout_height="wrap_content"
@@ -143,6 +139,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_cadastro_salvar"
         android:layout_gravity="end"
-        android:id="@+id/btnSave" />
+        android:id="@+id/btnSave"
+        android:onClick="salvarCadastro" />
 
 </LinearLayout>

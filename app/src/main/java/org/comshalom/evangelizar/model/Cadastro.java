@@ -24,9 +24,9 @@ public class Cadastro {
     private String nome;
     private String bairro;
     private String facebook;
-    private int idade;
+    private String idade;
     private String email;
-    private int tel;
+    private String tel;
     private int local;
     private int sync;
 
@@ -70,11 +70,11 @@ public class Cadastro {
         this.facebook = facebook;
     }
 
-    public int getIdade() {
+    public String getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(String idade) {
         this.idade = idade;
     }
 
@@ -86,11 +86,11 @@ public class Cadastro {
         this.email = email;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

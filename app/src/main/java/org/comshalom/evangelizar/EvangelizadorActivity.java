@@ -33,32 +33,18 @@ public class EvangelizadorActivity extends AppCompatActivity {
 
         evangelizador = repo.getEvangelizadorById(1);
 
-        editTextNome = (EditText) findViewById(R.id.editTextEvangelizadorNome);
-        spinnerTipo = (Spinner) findViewById(R.id.spinnerEvangelizadorTipo);
-        editTextTelefone = (EditText) findViewById(R.id.editTextEvangelizadorTelefone);
-        editTextEmail = (EditText) findViewById(R.id.editTextEvangelizadorEmail);
-        spinnerEvento = (Spinner) findViewById(R.id.spinnerEvangelizadorEvento);
-
         if(evangelizador != null) {
+            editTextNome = (EditText) findViewById(R.id.editTextEvangelizadorNome);
+            spinnerTipo = (Spinner) findViewById(R.id.spinnerEvangelizadorTipo);
+            editTextTelefone = (EditText) findViewById(R.id.editTextEvangelizadorTelefone);
+            editTextEmail = (EditText) findViewById(R.id.editTextEvangelizadorEmail);
+            spinnerEvento = (Spinner) findViewById(R.id.spinnerEvangelizadorEvento);
+
             editTextNome.setText(evangelizador.getNome());
-            editTextNome.setEnabled(false);
             spinnerTipo.setSelection(evangelizador.getTipo());
-            spinnerTipo.setEnabled(false);
             editTextTelefone.setText(evangelizador.getTelefone());
-            editTextTelefone.setEnabled(false);
             editTextEmail.setText(evangelizador.getEmail());
-            editTextEmail.setEnabled(false);
             spinnerEvento.setSelection(evangelizador.getEvento());
-            spinnerEvento.setEnabled(true);
-
-        } else {
-
-            editTextNome.setEnabled(true);
-            spinnerTipo.setEnabled(true);
-            editTextTelefone.setEnabled(true);
-            editTextEmail.setEnabled(true);
-            spinnerEvento.setEnabled(true);
-
         }
     }
 

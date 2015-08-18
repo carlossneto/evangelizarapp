@@ -33,45 +33,41 @@ import org.comshalom.evangelizar.dao.CadastroDAO;
 
 import org.comshalom.evangelizar.R;
 
-public class MainActivity extends ListActivity  implements android.view.View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 
-    Button btnAdd,btnGetAll;
+    Button btnAdd;
     TextView cadastro_Id;
 
-    @Override
-    public void onClick(View view) {
-        if (view== findViewById(R.id.btnAdd)){
+    public void novoCadastro(View view) {
+        Intent intent = new Intent(this, CadastroActivity.class);
+        intent.putExtra("cadastro_ID",0);
+        startActivity(intent);
+    }
 
-            Intent intent = new Intent(this, CadastroActivity.class);
-            intent.putExtra("cadastro_ID",0);
-            startActivity(intent);
+    private void montarListaCadastro() {
+        CadastroDAO repo = new CadastroDAO(this);
 
-        }else {
-            CadastroDAO repo = new CadastroDAO(this);
+        ArrayList<HashMap<String, String>> cadastroList =  repo.getCadastroList(0);
+        if(cadastroList.size()!=0) {
+            ListView lv = (ListView) findViewById(R.id.list_cadastro);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                    cadastro_Id = (TextView) view.findViewById(R.id.cadastro_Id);
 
-            ArrayList<HashMap<String, String>> cadastroList =  repo.getCadastroList(0);
-            if(cadastroList.size()!=0) {
-                ListView lv = getListView();
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                        cadastro_Id = (TextView) view.findViewById(R.id.cadastro_Id);
+                    String cadastroId = cadastro_Id.getText().toString();
 
-                        String cadastroId = cadastro_Id.getText().toString();
+                    System.out.println("Id parametro:"+ cadastroId);
 
-                        System.out.println("Id parametro:"+ cadastroId);
-
-                        Intent objIndent = new Intent(getApplicationContext(),CadastroActivity.class);
-                        objIndent.putExtra("cadastro_Id", Integer.parseInt( cadastroId));
-                        startActivity(objIndent);
-                    }
-                });
-                ListAdapter adapter = new SimpleAdapter( MainActivity.this,cadastroList, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
-                setListAdapter(adapter);
-            }else{
-                Toast.makeText(this,"Sem Cadastro!",Toast.LENGTH_SHORT).show();
-            }
-
+                    Intent objIndent = new Intent(getApplicationContext(),CadastroActivity.class);
+                    objIndent.putExtra("cadastro_Id", Integer.parseInt( cadastroId));
+                    startActivity(objIndent);
+                }
+            });
+            ListAdapter adapter = new SimpleAdapter( MainActivity.this,cadastroList, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
+            lv.setAdapter(adapter);
+        }else{
+            Toast.makeText(this, "Sem Cadastro!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -79,19 +75,15 @@ public class MainActivity extends ListActivity  implements android.view.View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(this);
-
-        btnGetAll = (Button) findViewById(R.id.btnGetAll);
-        btnGetAll.setOnClickListener(this);
+        System.out.println("passei no oncreate");
+        montarListaCadastro();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

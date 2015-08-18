@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">Evangelizar</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Sincronizar</string>
 
-    <string name="title_activity_cadastro">Nova Pessoa</string>
+    <string name="title_activity_cadastro">Pessoa</string>
     <string name="label_cadastro_nome">Nome:</string>
     <string name="label_cadastro_bairro">Bairro:</string>
     <string name="label_cadastro_endereco">Endereço:</string>
-    <string name="label_cadastro_telefone">Telelefone:</string>
+    <string name="label_cadastro_telefone">Telefone:</string>
     <string name="label_cadastro_facebook">Facebook:</string>
     <string name="label_cadastro_email">E-mail:</string>
     <string name="label_cadastro_idade">Idade:</string>
@@ -49,7 +48,6 @@
         <item>Recreio</item>
         <item>Santa Cruz</item>
         <item>Vigário</item>
-        <item></item>
     </string-array>
 
 </resources>

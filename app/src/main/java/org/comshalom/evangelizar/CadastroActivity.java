@@ -3,7 +3,7 @@ package org.comshalom.evangelizar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,12 +12,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.comshalom.evangelizar.dao.CadastroDAO  ;
+import org.comshalom.evangelizar.dao.CadastroDAO;
 import org.comshalom.evangelizar.model.Cadastro;
 
-public class CadastroActivity extends ActionBarActivity implements View.OnClickListener{
+public class CadastroActivity extends AppCompatActivity  {
 
-    Button btnSave ,  btnDelete, btnClose;
+    Button btnSave;
     EditText editTextNome;
     EditText editTextEmail;
     EditText editTextTel;
@@ -34,10 +34,6 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        btnSave = (Button) findViewById(R.id.btnSave);
-        //TODO APAGAR DEPOIS btnDelete = (Button) findViewById(R.id.btnDelete);
-        //TODO APAGAR DEPOIS btnClose = (Button) findViewById(R.id.btnClose);
-
         editTextNome = (EditText) findViewById(R.id.editTextNome);
         editTextTel = (EditText) findViewById(R.id.editTextTel);
         editTextBairro = (EditText) findViewById(R.id.editTextBairro);
@@ -45,10 +41,6 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         editTextIdade = (EditText) findViewById(R.id.editTextIdade);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         spinnerLocal = (Spinner) findViewById(R.id.spinnerCadastroLocal);
-
-        btnSave.setOnClickListener(this);
-        //TODO APAGAR DEPOIS btnDelete.setOnClickListener(this);
-        //TODO APAGAR DEPOIS btnClose.setOnClickListener(this);
 
         _Cadastro_Id =0;
         Intent intent = getIntent();
@@ -61,11 +53,11 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
 
         editTextNome.setText( cadastro.getNome() );
         editTextEmail.setText( cadastro.getEmail() );
-        editTextTel.setText( String.valueOf(cadastro.getTel()));
+        editTextTel.setText(cadastro.getTel());
         editTextBairro.setText( cadastro.getBairro() );
         editTextFacebook.setText( cadastro.getFacebook() );
         editTextIdade.setText(String.valueOf(cadastro.getIdade()));
-        spinnerLocal.setSelection( cadastro.getLocal() );
+        spinnerLocal.setSelection(cadastro.getLocal());
 
     }
 
@@ -90,45 +82,33 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View view) {
+    public void salvarCadastro(View view) {
 
-        if (view == findViewById(R.id.btnSave)){
-            CadastroDAO repo = new CadastroDAO(this);
-            Cadastro cadastro = new Cadastro();
+        CadastroDAO repo = new CadastroDAO(this);
+        Cadastro cadastro = new Cadastro();
 
-            cadastro.setNome(editTextNome.getText().toString());
-            cadastro.setBairro(editTextBairro.getText().toString());
-            cadastro.setFacebook(editTextFacebook.getText().toString());
-            cadastro.setIdade(Integer.parseInt(editTextIdade.getText().toString()));
-            cadastro.setEmail(editTextEmail.getText().toString());
-            cadastro.setTel(Integer.parseInt(editTextTel.getText().toString()));
-            cadastro.setLocal ( spinnerLocal.getSelectedItemPosition() );
-            cadastro.setCadastro_ID( _Cadastro_Id );
+        cadastro.setNome(editTextNome.getText().toString());
+        cadastro.setBairro(editTextBairro.getText().toString());
+        cadastro.setFacebook(editTextFacebook.getText().toString());
+        cadastro.setIdade(editTextIdade.getText().toString());
+        cadastro.setEmail(editTextEmail.getText().toString());
+        cadastro.setTel(editTextTel.getText().toString());
+        cadastro.setLocal ( spinnerLocal.getSelectedItemPosition() );
+        cadastro.setCadastro_ID( _Cadastro_Id );
 
-            //System.out.print("debug_email :" +  cadastro.email);
-            //System.out.print("debug_local :" +  cadastro.local);
+        //System.out.print("debug_email :" +  cadastro.email);
+        //System.out.print("debug_local :" +  cadastro.local);
 
-            if (_Cadastro_Id==0){
-                _Cadastro_Id = repo.insert(cadastro);
-
-                Toast.makeText(this,"New Cadastro Insert",Toast.LENGTH_SHORT).show();
-            }else{
-
-                repo.update(cadastro);
-                Toast.makeText(this,"Cadastro Record updated",Toast.LENGTH_SHORT).show();
-            }
+        if (_Cadastro_Id==0){
+            _Cadastro_Id = repo.insert(cadastro);
+            Toast.makeText(this,"Cadastro inserido com sucesso!",Toast.LENGTH_SHORT).show();
+        }else{
+            repo.update(cadastro);
+            Toast.makeText(this,"Cadastro atualizado com sucesso!",Toast.LENGTH_SHORT).show();
         }
-        /*TODO APAGAR DEPOIS
-        else if (view== findViewById(R.id.btnDelete)){
-            CadastroDAO repo = new CadastroDAO(this);
-            repo.delete(_Cadastro_Id);
-            Toast.makeText(this, "Cadastro Record Deleted", Toast.LENGTH_SHORT);
-            finish();
-        }else if (view== findViewById(R.id.btnClose)){
-            finish();
-        }
-        */
 
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
