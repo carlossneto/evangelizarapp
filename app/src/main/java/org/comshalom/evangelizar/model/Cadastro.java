@@ -27,7 +27,7 @@ public class Cadastro {
     private int idade;
     private String email;
     private int tel;
-    private String local;
+    private int local;
     private int sync;
 
     public int getSync() {
@@ -94,11 +94,11 @@ public class Cadastro {
         this.tel = tel;
     }
 
-    public String getLocal() {
+    public int getLocal() {
         return local;
     }
 
-    public void setLocal(String local) {
+    public void setLocal(int local) {
         this.local = local;
     }
 }

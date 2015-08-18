@@ -34,7 +34,7 @@ public class CadastroDAO {
         values.put(Cadastro.KEY_local, cadastro.getLocal() );
         values.put(Cadastro.KEY_sync, 0 );
 
-        System.out.println("valores :" + values);
+        //System.out.println("valores :" + values);
 
         /*
         String insert_sql = "INSERT INTO Cadastro (nome,endereco,bairro,nascimento,idade,email,tel) values" +
@@ -165,7 +165,7 @@ public class CadastroDAO {
                 cadastro.setIdade  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_idade)) );
                 cadastro.setEmail  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email)) );
                 cadastro.setTel  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_tel)) );
-                cadastro.setLocal  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_local)) );
+                cadastro.setLocal  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_local)) );
 
             } while (cursor.moveToNext());
         }

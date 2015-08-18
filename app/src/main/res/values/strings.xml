@@ -12,8 +12,8 @@
     <string name="label_cadastro_facebook">Facebook:</string>
     <string name="label_cadastro_email">E-mail:</string>
     <string name="label_cadastro_idade">Idade:</string>
-    <string name="label_cadastro_local">Local:</string>
     <string name="button_cadastro_salvar">Salvar</string>
+    <string name="label_cadastro_local">Local:</string>
 
     <string name="title_activity_evangelizador">Evangelizador</string>
     <string name="label_evangelizador_nome">Nome:</string>
@@ -41,6 +41,13 @@
         <item>Noite de louvor</item>
         <item>Reviver</item>
         <item>Outro</item>
+    </string-array>
+
+    <string-array name="local_shalom">
+        <item></item>
+        <item>Catete</item>
+        <item>Vigário</item>
+        <item>Santa Cruz</item>
     </string-array>
 
 </resources>
