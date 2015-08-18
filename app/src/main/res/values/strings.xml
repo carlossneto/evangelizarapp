@@ -46,8 +46,10 @@
     <string-array name="local_shalom">
         <item></item>
         <item>Catete</item>
-        <item>Vigário</item>
+        <item>Recreio</item>
         <item>Santa Cruz</item>
+        <item>Vigário</item>
+        <item></item>
     </string-array>
 
 </resources>
