@@ -10,7 +10,6 @@ public class Cadastro {
     // Labels Table Columns names
     public static final String KEY_ID = "id";
     public static final String KEY_nome = "nome";
-    public static final String KEY_endereco = "endereco";
     public static final String KEY_bairro = "bairro";
     public static final String KEY_facebook = "facebook";
     public static final String KEY_idade = "idade";
@@ -20,11 +19,9 @@ public class Cadastro {
     public static final String KEY_sync = "sync";
 
 
-
     // property help us to keep data
     private int cadastro_ID;
     private String nome;
-    private String endereco;
     private String bairro;
     private String facebook;
     private int idade;
@@ -55,14 +52,6 @@ public class Cadastro {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getBairro() {

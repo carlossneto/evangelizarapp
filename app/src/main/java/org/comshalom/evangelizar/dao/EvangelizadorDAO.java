@@ -21,10 +21,7 @@ public class EvangelizadorDAO {
     public EvangelizadorDAO(Context context) {
 
         dbHelper = new DBHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        //db.execSQL("drop table Evangelizador)");
-        //db.execSQL("create table Evangelizador (id INTEGER PRIMARY KEY,nome TEXT, tipo TEXT, telefone TEXT, email TEXT, evento INTEGER)");
-        //db.close();
+
     }
 
     public void insert(Evangelizador evangelizador) {

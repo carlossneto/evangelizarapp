@@ -46,19 +46,7 @@
         </TableRow>
 
         <TableRow>
-            <TextView
-                android:id="@+id/textCadastroEndereco"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_endereco"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextEnd"
-                android:inputType="textCapWords|textPersonName"/>
         </TableRow>
 
         <TableRow>

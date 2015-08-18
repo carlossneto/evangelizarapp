@@ -16,10 +16,7 @@ public class CadastroDAO {
     public CadastroDAO(Context context) {
 
         dbHelper = new DBHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        //db.execSQL("drop table if exists Cadastro");
-        //db.execSQL("CREATE TABLE Cadastro (id  INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT,endereco TEXT,bairro TEXT, facebook TEXT,idade INTEGER,email TEXT,tel INTEGER, local TEXT, sync INTEGER)");
-        db.close();
+
     }
 
     public int insert(Cadastro cadastro) {
@@ -29,7 +26,6 @@ public class CadastroDAO {
         ContentValues values = new ContentValues();
 
         values.put(Cadastro.KEY_nome, cadastro.getNome() );
-        values.put(Cadastro.KEY_endereco, cadastro.getEndereco() );
         values.put(Cadastro.KEY_bairro, cadastro.getBairro() );
         values.put(Cadastro.KEY_facebook, cadastro.getFacebook() );
         values.put(Cadastro.KEY_idade, cadastro.getIdade() );
@@ -74,7 +70,6 @@ public class CadastroDAO {
         ContentValues values = new ContentValues();
 
         values.put(Cadastro.KEY_nome, cadastro.getNome() );
-        values.put(Cadastro.KEY_endereco, cadastro.getEndereco() );
         values.put(Cadastro.KEY_bairro, cadastro.getBairro() );
         values.put(Cadastro.KEY_facebook, cadastro.getFacebook() );
         values.put(Cadastro.KEY_idade, cadastro.getIdade() );
@@ -102,7 +97,6 @@ public class CadastroDAO {
         String selectQuery =  "SELECT  " +
         Cadastro.KEY_ID + "," +
         Cadastro.KEY_nome + "," +
-        Cadastro.KEY_endereco + "," +
         Cadastro.KEY_bairro + "," +
         Cadastro.KEY_facebook + "," +
         Cadastro.KEY_idade + "," +
@@ -110,7 +104,7 @@ public class CadastroDAO {
         Cadastro.KEY_local + "," +
         Cadastro.KEY_tel +
         " FROM " + Cadastro.TABLE +
-        " WHERE sync = "+ sync ;
+        " WHERE " + Cadastro.KEY_sync + " = "+ sync ;
 
         System.out.println(selectQuery);
 
@@ -143,7 +137,6 @@ public class CadastroDAO {
         String selectQuery =  "SELECT  " +
                 Cadastro.KEY_ID + "," +
                 Cadastro.KEY_nome + "," +
-                Cadastro.KEY_endereco + "," +
                 Cadastro.KEY_bairro + "," +
                 Cadastro.KEY_facebook + "," +
                 Cadastro.KEY_idade + "," +
@@ -167,7 +160,6 @@ public class CadastroDAO {
                 //cadastro.idade =cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_idade));
 
                 cadastro.setNome(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
-                cadastro.setEndereco(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_endereco)));
                 cadastro.setBairro  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
                 cadastro.setFacebook  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_facebook)) );
                 cadastro.setIdade  ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_idade)) );

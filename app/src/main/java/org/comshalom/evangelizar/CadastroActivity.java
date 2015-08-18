@@ -19,7 +19,6 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
     Button btnSave ,  btnDelete, btnClose;
     EditText editTextNome;
     EditText editTextEmail;
-    EditText editTextEnd;
     EditText editTextTel;
     EditText editTextBairro;
     EditText editTextFacebook;
@@ -45,7 +44,7 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
         editTextIdade = (EditText) findViewById(R.id.editTextIdade);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextLocal = (EditText) findViewById(R.id.editTextLocal);
-        editTextEnd = (EditText) findViewById(R.id.editTextEnd);
+
 
         btnSave.setOnClickListener(this);
         //TODO APAGAR DEPOIS btnDelete.setOnClickListener(this);
@@ -63,7 +62,6 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
 
         editTextNome.setText( cadastro.getNome() );
         editTextEmail.setText( cadastro.getEmail() );
-        editTextEnd.setText( cadastro.getEndereco() );
         editTextTel.setText( String.valueOf(cadastro.getTel() ));
         editTextBairro.setText( cadastro.getBairro() );
         editTextFacebook.setText( cadastro.getFacebook() );
@@ -99,7 +97,6 @@ public class CadastroActivity extends ActionBarActivity implements View.OnClickL
             Cadastro cadastro = new Cadastro();
 
             cadastro.setNome(editTextNome.getText().toString());
-            cadastro.setEndereco(editTextEnd.getText().toString());
             cadastro.setBairro(editTextBairro.getText().toString());
             cadastro.setFacebook(editTextFacebook.getText().toString());
             cadastro.setIdade(Integer.parseInt(editTextIdade.getText().toString()));

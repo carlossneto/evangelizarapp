@@ -26,13 +26,12 @@ public class DBHelper  extends SQLiteOpenHelper {
         String CREATE_TABLE_CADASTRO = "CREATE TABLE IF NOT EXISTS  " + Cadastro.TABLE  + "("
                 + Cadastro.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Cadastro.KEY_nome + " TEXT, "
-                + Cadastro.KEY_endereco + " TEXT, "
                 + Cadastro.KEY_bairro + " TEXT, "
                 + Cadastro.KEY_facebook + " TEXT, "
                 + Cadastro.KEY_idade + " INTEGER, "
                 + Cadastro.KEY_email + " TEXT, "
                 + Cadastro.KEY_local + " TEXT, "
-                + Cadastro.KEY_tel + " INTEGER "
+                + Cadastro.KEY_tel + " INTEGER, "
                 + Cadastro.KEY_sync +" INTEGER )";
 
         String CREATE_TABLE_EVANGELIZADOR = "CREATE TABLE IF NOT EXISTS  " + Evangelizador.TABLE  + "("
