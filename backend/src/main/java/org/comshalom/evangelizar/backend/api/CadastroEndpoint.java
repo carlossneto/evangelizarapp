@@ -6,7 +6,7 @@ import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
 import org.comshalom.evangelizar.backend.Constants;
-import org.comshalom.evangelizar.backend.model.Cadastro;
+import org.comshalom.evangelizar.backend.model.CadastroVO;
 
 import java.util.logging.Logger;
 
@@ -38,7 +38,7 @@ public class CadastroEndpoint {
      * authorized
      */
     @ApiMethod(httpMethod = "POST")
-    public final Cadastro inserirContato(final Cadastro cadastro) {
+    public final CadastroVO inserirCadastro(final CadastroVO cadastro) {
 
         ofy().save().entity(cadastro).now();
 

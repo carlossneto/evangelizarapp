@@ -20,7 +20,7 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 
-import org.comshalom.evangelizar.backend.model.Cadastro;
+import org.comshalom.evangelizar.backend.model.CadastroVO;
 
 
 /**
@@ -36,7 +36,7 @@ public final class OfyService {
     }
 
     static {
-            factory().register(Cadastro.class);
+            factory().register(CadastroVO.class);
     }
 
     /**
