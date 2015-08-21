@@ -85,9 +85,9 @@ public class CadastroDAO {
         db.close(); // Closing database connection
     }
 
-    public void updateSync() {
+    public void updateSync(int cadastro_Id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String updateQuery = "update cadastro set sync = 1";
+        String updateQuery = "update cadastro set sync = 1 where " + Cadastro.KEY_ID + "=" + cadastro_Id;
         db.execSQL( updateQuery );
         db.close();
     }
@@ -119,7 +119,7 @@ public class CadastroDAO {
                 Cadastro cadastro = new Cadastro();
                 cadastro.setCadastro_ID(cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_ID)));
                 cadastro.setNome(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
-                cadastro.setBairro  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
+                cadastro.setBairro(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
                 cadastro.setFacebook  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_facebook)) );
                 cadastro.setIdade  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_idade)) );
                 cadastro.setEmail(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email)));

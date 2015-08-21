@@ -61,6 +61,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, Map<Evangelizador, List
         context = params[0].first;
         Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros =  params[0].second;
 
+        CadastroDAO repo = new CadastroDAO(context);
         Evangelizador evangelizador = mapaEvangelizadorCadastros.entrySet().iterator().next().getKey();
         List<Cadastro> listaCadastro = mapaEvangelizadorCadastros.entrySet().iterator().next().getValue();
 
@@ -82,6 +83,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, Map<Evangelizador, List
 
             try {
                 cadastroApi.cadastroEndpoint().inserirCadastro(novoCadastro).execute();
+                repo.updateSync(cadastro.getCadastro_ID());
             } catch (IOException e) {
                 e.printStackTrace();
                 return "Erro ao sincronizar a lista! Tente mais tarde com a Internet ligada!" ;
@@ -114,9 +116,7 @@ public class MainActivity extends AppCompatActivity {
         CadastroDAO repo = new CadastroDAO(this);
 
         List<Cadastro> cadastroList =  repo.getCadastroList(0);
-        if(cadastroList.isEmpty()) {
-            Toast.makeText(this, "Nenhum Cadastro até o momento!", Toast.LENGTH_SHORT).show();
-        }else{
+        if(!cadastroList.isEmpty()) {
             ListView lv = (ListView) findViewById(R.id.list_cadastro);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -136,10 +136,8 @@ public class MainActivity extends AppCompatActivity {
                 mapaCadastroView.put("nome", cadastro.getNome());
                 listaCadastroView.add(mapaCadastroView);
             }
-
             ListAdapter adapter = new SimpleAdapter(this, listaCadastroView, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
             lv.setAdapter(adapter);
-
         }
     }
 
