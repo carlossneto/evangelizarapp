@@ -1,5 +1,6 @@
 package org.comshalom.evangelizar;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -48,18 +49,32 @@ import org.comshalom.evangelizar.type.TipoEvangelizadorEnum;
 import org.comshalom.evangelizar.type.TipoEventoEnum;
 import org.comshalom.evangelizar.type.TipoLocalEnum;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, Map<Evangelizador, List<Cadastro>>>, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<Map<Evangelizador, List<Cadastro>>, Void, String> {
 
     private static CadastroApi cadastroApi;
     private Context context;
+    private ProgressDialog progressDialog;
+
+    public EndpointsAsyncTask(Context context) {
+        this.context = context;
+    }
 
     @Override
-    protected String doInBackground(Pair<Context, Map<Evangelizador, List<Cadastro>>>... params) {
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("Sincronizando...");
+        progressDialog.setIndeterminate(false);
+        progressDialog.show();
+
+    }
+
+    @Override
+    protected String doInBackground(Map<Evangelizador, List<Cadastro>>... params) {
 
         cadastroApi = CloudEndpointBuilderHelper.getEndpoints();
 
-        context = params[0].first;
-        Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros =  params[0].second;
+        Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros =  params[0];
 
         CadastroDAO repo = new CadastroDAO(context);
         Evangelizador evangelizador = mapaEvangelizadorCadastros.entrySet().iterator().next().getKey();
@@ -95,7 +110,9 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, Map<Evangelizador, List
 
     @Override
     protected void onPostExecute(String result) {
-        MainActivity mainActivity = (MainActivity) context;
+        if(progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
 
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
@@ -112,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void montarListaCadastro() {
+    public void montarListaCadastro() {
         CadastroDAO repo = new CadastroDAO(this);
 
         List<Cadastro> cadastroList =  repo.getCadastroList(0);
@@ -176,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros = new HashMap<Evangelizador, List<Cadastro>>();
                 mapaEvangelizadorCadastros.put(evangelizador, cadastroList);
 
-                new EndpointsAsyncTask().execute(new Pair<Context, Map<Evangelizador, List<Cadastro>>>(this, mapaEvangelizadorCadastros));
+                new EndpointsAsyncTask(this).execute(mapaEvangelizadorCadastros);
             }
 
             return true;

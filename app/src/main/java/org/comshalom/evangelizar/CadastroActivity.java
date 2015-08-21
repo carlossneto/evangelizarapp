@@ -56,7 +56,7 @@ public class CadastroActivity extends AppCompatActivity  {
         editTextTel.setText(cadastro.getTel());
         editTextBairro.setText( cadastro.getBairro() );
         editTextFacebook.setText( cadastro.getFacebook() );
-        editTextIdade.setText(String.valueOf(cadastro.getIdade()));
+        editTextIdade.setText(cadastro.getIdade());
         spinnerLocal.setSelection(cadastro.getLocal());
 
     }
