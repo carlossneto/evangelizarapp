@@ -7,99 +7,103 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.comshalom.evangelizar.EvangelizadorActivity">
 
-    <TableLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1">
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textEvangelizadorNome"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_evangelizador_nome"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textEvangelizadorNome"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_evangelizador_nome"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:id="@+id/editTextEvangelizadorNome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapWords|textPersonName"/>
-        </TableRow>
+                <EditText
+                    android:id="@+id/editTextEvangelizadorNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords|textPersonName"/>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textEvangelizadorTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_evangelizador_tipo"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+            <TableRow>
+                <TextView
+                    android:id="@+id/textEvangelizadorTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_evangelizador_tipo"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinnerEvangelizadorTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextEmail"
-                android:entries="@array/tipo"
-                android:spinnerMode="dropdown" />
-        </TableRow>
+                <Spinner
+                    android:id="@+id/spinnerEvangelizadorTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editTextEmail"
+                    android:entries="@array/tipo"
+                    android:spinnerMode="dropdown" />
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textEvangelizadorTelefone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_evangelizador_telefone"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+            <TableRow>
+                <TextView
+                    android:id="@+id/textEvangelizadorTelefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_evangelizador_telefone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextEvangelizadorTelefone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="phone"/>
-        </TableRow>
+                <EditText
+                    android:id="@+id/editTextEvangelizadorTelefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"/>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textEvangelizadorEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_evangelizador_email"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+            <TableRow>
+                <TextView
+                    android:id="@+id/textEvangelizadorEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_evangelizador_email"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextEvangelizadorEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </TableRow>
+                <EditText
+                    android:id="@+id/editTextEvangelizadorEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textEvangelizadorEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_evangelizador_evento"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+            <TableRow>
+                <TextView
+                    android:id="@+id/textEvangelizadorEvento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_evangelizador_evento"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinnerEvangelizadorEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/evento"
-                android:spinnerMode="dropdown" />
-        </TableRow>
+                <Spinner
+                    android:id="@+id/spinnerEvangelizadorEvento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/evento"
+                    android:spinnerMode="dropdown" />
+            </TableRow>
 
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
 
     <Button
         android:layout_width="wrap_content"

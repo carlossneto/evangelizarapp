@@ -63,10 +63,22 @@ public class EvangelizadorActivity extends AppCompatActivity {
 
         EvangelizadorDAO repo = new EvangelizadorDAO(this);
         evangelizador = new Evangelizador();
-        evangelizador.setNome(editTextNome.getText().toString());
+
+        String nome = editTextNome.getText().toString().trim();
+        if(nome.equals("")) {
+            editTextNome.setError("Nome é obrigatório!");
+            return;
+        } else {
+            evangelizador.setNome(nome);
+        }
+
+        String email = editTextEmail.getText().toString().trim();
+        evangelizador.setEmail(email);
+
+        String telefone = editTextTelefone.getText().toString();
+        evangelizador.setTelefone(telefone);
+
         evangelizador.setTipo(spinnerTipo.getSelectedItemPosition());
-        evangelizador.setTelefone(editTextTelefone.getText().toString());
-        evangelizador.setEmail(editTextEmail.getText().toString());
         evangelizador.setEvento(spinnerEvento.getSelectedItemPosition());
 
         if(primeiraVez) {

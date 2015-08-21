@@ -74,17 +74,33 @@ public class CadastroActivity extends AppCompatActivity  {
         CadastroDAO repo = new CadastroDAO(this);
         Cadastro cadastro = new Cadastro();
 
-        cadastro.setNome(editTextNome.getText().toString());
-        cadastro.setBairro(editTextBairro.getText().toString());
-        cadastro.setFacebook(editTextFacebook.getText().toString());
-        cadastro.setIdade(editTextIdade.getText().toString());
-        cadastro.setEmail(editTextEmail.getText().toString());
-        cadastro.setTel(editTextTel.getText().toString());
-        cadastro.setLocal ( spinnerLocal.getSelectedItemPosition() );
-        cadastro.setCadastro_ID( _Cadastro_Id );
 
-        //System.out.print("debug_email :" +  cadastro.email);
-        //System.out.print("debug_local :" +  cadastro.local);
+        String nome = editTextNome.getText().toString().trim();
+        if(nome.equals("")) {
+            editTextNome.setError("Nome é obrigatório!");
+            return;
+        } else {
+            cadastro.setNome(nome);
+        }
+
+        String bairro = editTextBairro.getText().toString().trim();
+        cadastro.setBairro(bairro);
+
+        String facebook = editTextFacebook.getText().toString().trim();
+        cadastro.setFacebook(facebook);
+
+        String idade = editTextIdade.getText().toString().trim();
+        cadastro.setIdade(idade);
+
+        String email = editTextEmail.getText().toString().trim();
+        cadastro.setEmail(email);
+
+        String tel = editTextTel.getText().toString().trim();
+        cadastro.setTel(tel);
+
+        cadastro.setLocal ( spinnerLocal.getSelectedItemPosition() );
+
+        cadastro.setCadastro_ID( _Cadastro_Id );
 
         if (_Cadastro_Id==0){
             _Cadastro_Id = repo.insert(cadastro);

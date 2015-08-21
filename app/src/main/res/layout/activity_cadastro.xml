@@ -7,132 +7,136 @@
     android:orientation="vertical"
     tools:context="org.comshalom.evangelizar.CadastroActivity">
 
-    <TableLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1">
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroNome"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_nome"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroNome"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_nome"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextNome"
-                android:inputType="textCapWords|textPersonName"/>
-        </TableRow>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextNome"
+                    android:inputType="textCapWords|textPersonName"/>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroTelefone"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_telefone"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroTelefone"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_telefone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:id="@+id/editTextTel" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:id="@+id/editTextTel" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroBairro"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_bairro"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroBairro"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_bairro"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapWords|textPersonName"
-                android:id="@+id/editTextBairro" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords|textPersonName"
+                    android:id="@+id/editTextBairro" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroFacebook"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_facebook"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroFacebook"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_facebook"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:id="@+id/editTextFacebook" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/editTextFacebook" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroIdade"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_idade"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroIdade"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_idade"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/editTextIdade" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/editTextIdade" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastroEmail"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_email"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"/>
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastroEmail"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_email"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:id="@+id/editTextEmail" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:id="@+id/editTextEmail" />
 
-        </TableRow>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/textCadastrorEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/label_cadastro_local"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+            <TableRow>
+                <TextView
+                    android:id="@+id/textCadastrorEvento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_cadastro_local"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinnerCadastroLocal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/local_shalom"
-                android:spinnerMode="dropdown" />
+                <Spinner
+                    android:id="@+id/spinnerCadastroLocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/local_shalom"
+                    android:spinnerMode="dropdown" />
 
-        </TableRow>
+            </TableRow>
 
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
 
     <Button
         android:layout_width="wrap_content"
