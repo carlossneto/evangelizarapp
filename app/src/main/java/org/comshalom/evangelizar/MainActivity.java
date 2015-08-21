@@ -34,52 +34,61 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.comshalom.evangelizar.backend.cadastroApi.CadastroApi;
 import org.comshalom.evangelizar.backend.cadastroApi.model.CadastroVO;
 import org.comshalom.evangelizar.dao.CadastroDAO;
 
 import org.comshalom.evangelizar.R;
+import org.comshalom.evangelizar.dao.EvangelizadorDAO;
 import org.comshalom.evangelizar.model.Cadastro;
+import org.comshalom.evangelizar.model.Evangelizador;
+import org.comshalom.evangelizar.type.TipoEvangelizadorEnum;
+import org.comshalom.evangelizar.type.TipoEventoEnum;
+import org.comshalom.evangelizar.type.TipoLocalEnum;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, List<Cadastro>>, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<Pair<Context, Map<Evangelizador, List<Cadastro>>>, Void, String> {
 
     private static CadastroApi cadastroApi;
     private Context context;
 
     @Override
-    protected String doInBackground(Pair<Context, List<Cadastro>>... params) {
+    protected String doInBackground(Pair<Context, Map<Evangelizador, List<Cadastro>>>... params) {
 
         cadastroApi = CloudEndpointBuilderHelper.getEndpoints();
 
         context = params[0].first;
-        List<Cadastro> listaCadastro = params[0].second;
+        Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros =  params[0].second;
+
+        Evangelizador evangelizador = mapaEvangelizadorCadastros.entrySet().iterator().next().getKey();
+        List<Cadastro> listaCadastro = mapaEvangelizadorCadastros.entrySet().iterator().next().getValue();
 
         for (Cadastro cadastro :listaCadastro) {
             CadastroVO novoCadastro = new CadastroVO();
             novoCadastro.setNome(cadastro.getNome());
-            novoCadastro.setTel(cadastro.getTel());
+            novoCadastro.setTelefone(cadastro.getTel());
             novoCadastro.setBairro(cadastro.getBairro());
             novoCadastro.setFacebook(cadastro.getFacebook());
             novoCadastro.setIdade(cadastro.getIdade());
             novoCadastro.setEmail(cadastro.getEmail());
-            novoCadastro.setLocal(cadastro.getLocal());
+            novoCadastro.setLocal(TipoLocalEnum.getDescricaoByCodigo(cadastro.getLocal()));
 
-            novoCadastro.setNomeEvangelizador("Teste");
-            novoCadastro.setTipoEvangelizador(0);
-            novoCadastro.setTelefoneEvangelizador("21");
-            novoCadastro.setEmailEvangelizador("teste@tetse");
-            novoCadastro.setEventoEvangelizador(0);
+            novoCadastro.setEvangelizadorNome(evangelizador.getNome());
+            novoCadastro.setEvangelizadorTipo(TipoEvangelizadorEnum.getDescricaoByCodigo(evangelizador.getTipo()));
+            novoCadastro.setEvangelizadorTelefone(evangelizador.getTelefone());
+            novoCadastro.setEvangelizadorEmail(evangelizador.getEmail());
+            novoCadastro.setEvangelizadorEvento(TipoEventoEnum.getDescricaoByCodigo(evangelizador.getEvento()));
 
             try {
                 cadastroApi.cadastroEndpoint().inserirCadastro(novoCadastro).execute();
             } catch (IOException e) {
                 e.printStackTrace();
-                return "Erro ao sincronizar a lista!";
+                return "Erro ao sincronizar a lista! Tente mais tarde com a Internet ligada!" ;
             }
         }
 
-        return "Lista sincronizada!";
+        return "Lista sincronizada com sucesso!";
     }
 
     @Override
@@ -104,31 +113,33 @@ public class MainActivity extends AppCompatActivity {
     private void montarListaCadastro() {
         CadastroDAO repo = new CadastroDAO(this);
 
-        ArrayList<HashMap<String, String>> cadastroList =  repo.getCadastroList(0);
-        if(cadastroList.size()!=0) {
+        List<Cadastro> cadastroList =  repo.getCadastroList(0);
+        if(cadastroList.isEmpty()) {
+            Toast.makeText(this, "Nenhum Cadastro até o momento!", Toast.LENGTH_SHORT).show();
+        }else{
             ListView lv = (ListView) findViewById(R.id.list_cadastro);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     cadastro_Id = (TextView) view.findViewById(R.id.cadastro_Id);
-
                     String cadastroId = cadastro_Id.getText().toString();
-
-                    System.out.println("Id parametro:"+ cadastroId);
-
-                    Intent objIndent = new Intent(getApplicationContext(),CadastroActivity.class);
-                    objIndent.putExtra("cadastro_Id", Integer.parseInt( cadastroId));
+                    Intent objIndent = new Intent(getApplicationContext(), CadastroActivity.class);
+                    objIndent.putExtra("cadastro_Id", Integer.parseInt(cadastroId));
                     startActivity(objIndent);
                 }
             });
-            ListAdapter adapter = new SimpleAdapter( MainActivity.this,cadastroList, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
+
+            List<Map<String, String>> listaCadastroView =  new ArrayList<>();
+            for (Cadastro cadastro :cadastroList) {
+                Map<String, String> mapaCadastroView = new HashMap<>();
+                mapaCadastroView.put("id", String.valueOf(cadastro.getCadastro_ID()));
+                mapaCadastroView.put("nome", cadastro.getNome());
+                listaCadastroView.add(mapaCadastroView);
+            }
+
+            ListAdapter adapter = new SimpleAdapter(this, listaCadastroView, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
             lv.setAdapter(adapter);
 
-
-            //TODO pegar a lista e passar no parametro new EndpointsAsyncTask().execute(new Pair<Context, List<Cadastro>>(this, cadastroList));
-
-        }else{
-            Toast.makeText(this, "Sem Cadastro!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -155,6 +166,21 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
+            CadastroDAO repo = new CadastroDAO(this);
+            List<Cadastro> cadastroList =  repo.getCadastroList(0);
+            if (cadastroList.isEmpty()) {
+                Toast.makeText(this, "Lista já sincronizada!", Toast.LENGTH_SHORT).show();
+            } else {
+                EvangelizadorDAO evangelizadorDAO = new EvangelizadorDAO(this);
+                Evangelizador evangelizador = evangelizadorDAO.getEvangelizadorById(1);
+
+                Map<Evangelizador, List<Cadastro>> mapaEvangelizadorCadastros = new HashMap<Evangelizador, List<Cadastro>>();
+                mapaEvangelizadorCadastros.put(evangelizador, cadastroList);
+
+                new EndpointsAsyncTask().execute(new Pair<Context, Map<Evangelizador, List<Cadastro>>>(this, mapaEvangelizadorCadastros));
+            }
+
             return true;
         }
         return super.onOptionsItemSelected(item);

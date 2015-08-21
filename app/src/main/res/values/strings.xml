@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Evangelizar</string>
 
-    <string name="action_settings">Sincronizar</string>
+    <string name="title_activity_main">Lista Cadastro</string>
+    <string name="action_sincronizar">Sincronizar</string>
+    <string name="button_main_novo">Novo</string>
 
     <string name="title_activity_cadastro">Pessoa</string>
     <string name="label_cadastro_nome">Nome:</string>

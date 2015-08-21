@@ -9,6 +9,7 @@ import org.comshalom.evangelizar.model.Cadastro;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CadastroDAO {
     private DBHelper dbHelper;
@@ -91,7 +92,7 @@ public class CadastroDAO {
         db.close();
     }
 
-    public ArrayList<HashMap<String, String>>  getCadastroList(int sync) {
+    public List<Cadastro>  getCadastroList(int sync) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -108,16 +109,22 @@ public class CadastroDAO {
 
         System.out.println(selectQuery);
 
-        //Cadastro cadastro = new Cadastro();
-        ArrayList<HashMap<String, String>> cadastroList = new ArrayList<HashMap<String, String>>();
+        List<Cadastro> cadastroList =  new ArrayList<>();
+
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 System.out.print((cursor.getColumnIndex(Cadastro.KEY_ID)));
 
-                HashMap<String, String> cadastro = new HashMap<String, String>();
-                cadastro.put("id", cursor.getString(cursor.getColumnIndex(Cadastro.KEY_ID)));
-                cadastro.put("nome", cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
+                Cadastro cadastro = new Cadastro();
+                cadastro.setCadastro_ID(cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_ID)));
+                cadastro.setNome(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
+                cadastro.setBairro  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
+                cadastro.setFacebook  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_facebook)) );
+                cadastro.setIdade  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_idade)) );
+                cadastro.setEmail(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email)));
+                cadastro.setTel(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_tel)));
+                cadastro.setLocal(cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_local)));
                 cadastroList.add(cadastro);
 
             } while (cursor.moveToNext());
@@ -155,10 +162,6 @@ public class CadastroDAO {
         if (cursor.moveToFirst()) {
             do {
                 cadastro.setCadastro_ID ( cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_ID)) );
-                //cadastro.nome = cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome));
-                //cadastro.email  =cursor.getString(cursor.getColumnIndex(Cadastro.KEY_email));
-                //cadastro.idade =cursor.getInt(cursor.getColumnIndex(Cadastro.KEY_idade));
-
                 cadastro.setNome(cursor.getString(cursor.getColumnIndex(Cadastro.KEY_nome)));
                 cadastro.setBairro  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_bairro)) );
                 cadastro.setFacebook  ( cursor.getString(cursor.getColumnIndex(Cadastro.KEY_facebook)) );

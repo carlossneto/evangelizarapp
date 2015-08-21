@@ -3,8 +3,6 @@ package org.comshalom.evangelizar.backend.model;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
-import java.util.UUID;
-
 /**
  * Cadastro entity.
  */
@@ -19,14 +17,14 @@ public class CadastroVO {
     private String facebook;
     private String idade;
     private String email;
-    private String tel;
-    private int local;
+    private String telefone;
+    private String local;
 
-    private String nomeEvangelizador;
-    private int tipoEvangelizador;
-    private String telefoneEvangelizador;
-    private String emailEvangelizador;
-    private int eventoEvangelizador;
+    private String evangelizadorNome;
+    private String evangelizadorTipo;
+    private String evangelizadorTelefone;
+    private String evangelizadorEmail;
+    private String evangelizadorEvento;
 
     public String getIdGoogle() {
         return idGoogle;
@@ -76,59 +74,59 @@ public class CadastroVO {
         this.email = email;
     }
 
-    public String getTel() {
-        return tel;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public int getLocal() {
+    public String getLocal() {
         return local;
     }
 
-    public void setLocal(int local) {
+    public void setLocal(String local) {
         this.local = local;
     }
 
-    public String getNomeEvangelizador() {
-        return nomeEvangelizador;
+    public String getEvangelizadorNome() {
+        return evangelizadorNome;
     }
 
-    public void setNomeEvangelizador(String nomeEvangelizador) {
-        this.nomeEvangelizador = nomeEvangelizador;
+    public void setEvangelizadorNome(String evangelizadorNome) {
+        this.evangelizadorNome = evangelizadorNome;
     }
 
-    public int getTipoEvangelizador() {
-        return tipoEvangelizador;
+    public String getEvangelizadorTipo() {
+        return evangelizadorTipo;
     }
 
-    public void setTipoEvangelizador(int tipoEvangelizador) {
-        this.tipoEvangelizador = tipoEvangelizador;
+    public void setEvangelizadorTipo(String evangelizadorTipo) {
+        this.evangelizadorTipo = evangelizadorTipo;
     }
 
-    public String getTelefoneEvangelizador() {
-        return telefoneEvangelizador;
+    public String getEvangelizadorTelefone() {
+        return evangelizadorTelefone;
     }
 
-    public void setTelefoneEvangelizador(String telefoneEvangelizador) {
-        this.telefoneEvangelizador = telefoneEvangelizador;
+    public void setEvangelizadorTelefone(String evangelizadorTelefone) {
+        this.evangelizadorTelefone = evangelizadorTelefone;
     }
 
-    public String getEmailEvangelizador() {
-        return emailEvangelizador;
+    public String getEvangelizadorEmail() {
+        return evangelizadorEmail;
     }
 
-    public void setEmailEvangelizador(String emailEvangelizador) {
-        this.emailEvangelizador = emailEvangelizador;
+    public void setEvangelizadorEmail(String evangelizadorEmail) {
+        this.evangelizadorEmail = evangelizadorEmail;
     }
 
-    public int getEventoEvangelizador() {
-        return eventoEvangelizador;
+    public String getEvangelizadorEvento() {
+        return evangelizadorEvento;
     }
 
-    public void setEventoEvangelizador(int eventoEvangelizador) {
-        this.eventoEvangelizador = eventoEvangelizador;
+    public void setEvangelizadorEvento(String evangelizadorEvento) {
+        this.evangelizadorEvento = evangelizadorEvento;
     }
 }

@@ -8,6 +8,7 @@ import com.google.api.server.spi.config.ApiNamespace;
 import org.comshalom.evangelizar.backend.Constants;
 import org.comshalom.evangelizar.backend.model.CadastroVO;
 
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import static org.comshalom.evangelizar.backend.OfyService.ofy;
@@ -40,6 +41,7 @@ public class CadastroEndpoint {
     @ApiMethod(httpMethod = "POST")
     public final CadastroVO inserirCadastro(final CadastroVO cadastro) {
 
+        cadastro.setIdGoogle(UUID.randomUUID().toString());
         ofy().save().entity(cadastro).now();
 
         return cadastro;
