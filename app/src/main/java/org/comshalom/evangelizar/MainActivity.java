@@ -65,6 +65,8 @@ class EndpointsAsyncTask extends AsyncTask<Map<Evangelizador, List<Cadastro>>, V
         progressDialog = new ProgressDialog(context, ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("Sincronizando...");
         progressDialog.setIndeterminate(false);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
     }
