@@ -117,6 +117,9 @@ class EndpointsAsyncTask extends AsyncTask<Map<Evangelizador, List<Cadastro>>, V
         }
 
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+
+        MainActivity mainActivity = (MainActivity) context;
+        mainActivity.montarListaCadastro();
     }
 }
 
@@ -134,9 +137,13 @@ public class MainActivity extends AppCompatActivity {
     public void montarListaCadastro() {
         CadastroDAO repo = new CadastroDAO(this);
 
+
+        List<Map<String, String>> listaCadastroView =  new ArrayList<>();
+        ListView lv = (ListView) findViewById(R.id.list_cadastro);
+
         List<Cadastro> cadastroList =  repo.getCadastroList(0);
         if(!cadastroList.isEmpty()) {
-            ListView lv = (ListView) findViewById(R.id.list_cadastro);
+
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -148,16 +155,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            List<Map<String, String>> listaCadastroView =  new ArrayList<>();
             for (Cadastro cadastro :cadastroList) {
                 Map<String, String> mapaCadastroView = new HashMap<>();
                 mapaCadastroView.put("id", String.valueOf(cadastro.getCadastro_ID()));
                 mapaCadastroView.put("nome", cadastro.getNome());
                 listaCadastroView.add(mapaCadastroView);
             }
-            ListAdapter adapter = new SimpleAdapter(this, listaCadastroView, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
-            lv.setAdapter(adapter);
+
         }
+        ListAdapter adapter = new SimpleAdapter(this, listaCadastroView, R.layout.ver_cadastro, new String[] { "id","nome"}, new int[] {R.id.cadastro_Id, R.id.cadastro_nome});
+        lv.setAdapter(adapter);
     }
 
     @Override
