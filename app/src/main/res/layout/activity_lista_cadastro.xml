@@ -9,7 +9,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_main_novo"
+        android:text="@string/button_lista_cadastro_novo"
         android:id="@+id/btnAdd"
         android:layout_alignParentStart="true"
         android:onClick="novoCadastro"

@@ -28,7 +28,7 @@
 
         <activity
             android:name=".ListaCadastroActivity"
-            android:label="@string/title_activity_main"
+            android:label="@string/title_activity_lista_cadastro"
             android:parentActivityName=".EvangelizadorActivity" >
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
