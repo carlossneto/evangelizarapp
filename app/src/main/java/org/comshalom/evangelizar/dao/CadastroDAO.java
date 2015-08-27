@@ -105,7 +105,8 @@ public class CadastroDAO {
         Cadastro.KEY_local + "," +
         Cadastro.KEY_tel +
         " FROM " + Cadastro.TABLE +
-        " WHERE " + Cadastro.KEY_sync + " = "+ sync ;
+        " WHERE " + Cadastro.KEY_sync + " = "+ sync +
+        " ORDER BY + " + Cadastro.KEY_ID + " DESC"         ;
 
         System.out.println(selectQuery);
 
