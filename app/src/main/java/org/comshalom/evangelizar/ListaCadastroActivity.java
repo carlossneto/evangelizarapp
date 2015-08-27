@@ -5,26 +5,14 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -41,7 +29,6 @@ import org.comshalom.evangelizar.backend.cadastroApi.CadastroApi;
 import org.comshalom.evangelizar.backend.cadastroApi.model.CadastroVO;
 import org.comshalom.evangelizar.dao.CadastroDAO;
 
-import org.comshalom.evangelizar.R;
 import org.comshalom.evangelizar.dao.EvangelizadorDAO;
 import org.comshalom.evangelizar.model.Cadastro;
 import org.comshalom.evangelizar.model.Evangelizador;
@@ -118,12 +105,12 @@ class EndpointsAsyncTask extends AsyncTask<Map<Evangelizador, List<Cadastro>>, V
 
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
 
-        MainActivity mainActivity = (MainActivity) context;
-        mainActivity.montarListaCadastro();
+        ListaCadastroActivity listaCadastroActivity = (ListaCadastroActivity) context;
+        listaCadastroActivity.montarListaCadastro();
     }
 }
 
-public class MainActivity extends AppCompatActivity {
+public class ListaCadastroActivity extends AppCompatActivity {
 
     Button btnAdd;
     TextView cadastro_Id;
