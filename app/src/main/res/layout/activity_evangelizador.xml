@@ -47,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/editTextEmail"
                     android:entries="@array/tipo"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined" />
             </TableRow>
 
             <TableRow>
@@ -99,7 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/evento"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined" />
             </TableRow>
 
         </TableLayout>
