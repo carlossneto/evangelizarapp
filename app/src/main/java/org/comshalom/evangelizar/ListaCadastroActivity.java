@@ -3,6 +3,7 @@ package org.comshalom.evangelizar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -197,5 +198,13 @@ public class ListaCadastroActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = NavUtils.getParentActivityIntent(this);
+        startActivity(intent);
+
+    }
 
 }
