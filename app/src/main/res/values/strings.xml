@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Evangelizador</string>
+    <string name="app_name">EvangelizarApp</string>
 
     <string name="title_activity_lista_cadastro">Lista Cadastro</string>
     <string name="action_lista_cadastro_sincronizar">Sincronizar</string>
