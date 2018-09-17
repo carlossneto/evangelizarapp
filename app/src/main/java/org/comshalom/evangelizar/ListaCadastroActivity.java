@@ -87,7 +87,7 @@ class EndpointsAsyncTask extends AsyncTask<Map<Evangelizador, List<Cadastro>>, V
             novoCadastro.setEvangelizadorEvento(TipoEventoEnum.getDescricaoByCodigo(evangelizador.getEvento()));
 
             try {
-                cadastroApi.cadastroEndpoint().inserirCadastro(novoCadastro).execute();
+                cadastroApi.cadastroEndpoint().inserirCadastro(novoCadastro);
                 repo.updateSync(cadastro.getCadastro_ID());
             } catch (IOException e) {
                 e.printStackTrace();
